@@ -1,0 +1,12 @@
+{
+  "name": "azimuth-display",
+  "label": "Azimuth Display",
+  "platform": "EXB",
+  "version": "1.0.0",
+  "exbVersion": "1.13.0",
+  "author": "João Marcelo Daltro Marques",
+  "description": "Exibe a direção (azimute) de um ponto.",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {},
+  "widgetType": "controller"
+}

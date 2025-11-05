@@ -1,0 +1,21 @@
+{
+  "name": "street-view",
+  "type": "widget",
+  "version": "1.18.0",
+  "exbVersion": "1.18.0",
+  "author": "Developer",
+  "description": "Widget de visualização 360°",
+  "supportsMapWidget": true,
+  "useMapWidget": true,
+  "properties": {
+    "useMapWidget": true
+  },
+  "useDataSources": [],
+  "translatedLocales": ["pt-BR"],
+  "defaultSize": {
+    "width": 200,
+    "height": 400
+  },
+  "supportedThemes": ["default"],
+  "hasStyle": true
+}

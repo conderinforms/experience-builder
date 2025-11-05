@@ -1,0 +1,26 @@
+/** @jsx jsx */
+import { jsx, AllWidgetProps } from 'jimu-core'
+import { JimuMapViewComponent, JimuMapView } from 'jimu-arcgis'
+import { useState } from 'react';
+
+interface State {
+  jimuMapView: JimuMapView | null
+}
+
+export default function Widget (props: AllWidgetProps<any>) {
+  const [jimuMapView, setJimuMapView] = useState<JimuMapView | null>(null)
+
+  const onActiveViewChange = (jmv: JimuMapView) => {
+    console.log('Active view changed:', jmv)
+    setJimuMapView(jmv)
+  }
+
+  return (
+    <div>
+      <JimuMapViewComponent
+        useMapWidgetId={props.useMapWidgetIds?.[0]}
+        onActiveViewChange={onActiveViewChange}
+      />
+    </div>
+  )
+}

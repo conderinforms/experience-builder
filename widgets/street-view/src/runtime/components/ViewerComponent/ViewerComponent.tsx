@@ -10,7 +10,7 @@ import 'animate.css';
 import { selectScenePointWithMarker } from '../../services/EsriArcgis';
 import RadarComponent from '../RadarComponent/RadarComponent';
 import { ConvertYawToBearing, toBearing, toRadians } from '../../utils/MathUtil';
-import { JimuLayerViews } from 'jimu-arcgis';
+import { JimuLayerViews, JimuMapView } from 'jimu-arcgis';
 import { UpOutlined } from 'jimu-icons/outlined/directional/up'
 import ReactDOM from 'react-dom';
 import { AllWidgetProps } from 'jimu-core';
@@ -19,12 +19,14 @@ import { AllWidgetProps } from 'jimu-core';
 interface PhotoSphereViewerProps {
   sceneCurrent?: SceneModel;
   jimuLayerViews?: JimuLayerViews;
+  jimuMapView?: JimuMapView;
   props?: AllWidgetProps<any>;
 }
 
 const ViewerComponent: React.FC<PhotoSphereViewerProps> = ({
   sceneCurrent = null,
   jimuLayerViews = null,
+  jimuMapView = null,
   props = null
 }) => {
   const [viewer, setViewer] = useState(null);
@@ -134,8 +136,7 @@ const ViewerComponent: React.FC<PhotoSphereViewerProps> = ({
   const changeScene = async (newScene: SceneModel) => {
     ClearCompass();
 
-    var view = (window as any).activeMapView?.view
-    view.graphics.removeAll();
+    jimuMapView?.view.graphics.removeAll();
 
     if (!viewerInstance.current || !newScene) return;
 
@@ -156,7 +157,7 @@ const ViewerComponent: React.FC<PhotoSphereViewerProps> = ({
       newScene.connections = connections;
 
     sceneCurrent = newScene;
-    selectScenePointWithMarker(jimuLayerViews, sceneCurrent.pointLayer, (window as any).activeMapView?.view, props);
+    selectScenePointWithMarker(jimuLayerViews, sceneCurrent.pointLayer, jimuMapView?.view, props);
 
 
     viewerInstance.current.setPanorama(newScene.path, {
@@ -219,7 +220,7 @@ const ViewerComponent: React.FC<PhotoSphereViewerProps> = ({
     const initViewer = async () => {
       try {
 
-        var view = (window as any).activeMapView?.view
+        var view = jimuMapView?.view
         view.graphics.removeAll();
 
         const imageUrls = new Array<string>();
@@ -261,7 +262,7 @@ const ViewerComponent: React.FC<PhotoSphereViewerProps> = ({
         viewerInstance.current = newViewer;
         setViewer(newViewer);
 
-        selectScenePointWithMarker(jimuLayerViews, sceneCurrent.pointLayer, (window as any).activeMapView?.view, props);
+        selectScenePointWithMarker(jimuLayerViews, sceneCurrent.pointLayer, jimuMapView?.view, props);
         setSceneToRadarState(await buildSceneToRadar(sceneCurrent, jimuLayerViews, props));
 
 

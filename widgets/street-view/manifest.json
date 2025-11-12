@@ -7,6 +7,7 @@
   "description": "Widget de visualização 360°",
   "supportsMapWidget": true,
   "useMapWidget": true,
+  "dependency": ["jimu-arcgis"],
   "properties": {
     "useMapWidget": true
   },

@@ -17,7 +17,7 @@ Este repositório contém contribuições de **widgets e utilitários** desenvol
 
 ## 🪪 Licença
 
-Este projeto é licenciado sob a **Licença Pública do Estado** (ex.: [MIT](LICENSE), [GPL-3.0](LICENSE), ou outra aplicável conforme normas institucionais).
+Este projeto é licenciado sob: [CC BY-NC 4.0](LICENSE.md).
 
 ---
 
